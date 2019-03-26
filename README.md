@@ -470,17 +470,17 @@ MVVM分层设计可以认为是MVP的进化，它将Presenter改为了ViewModel�
 
 实际上MVI并不能够算是一个模式，它的提出者是和MVP结合起来用的，不过在MVVM中一样可以使用，重点就在View和ViewModel中做变化。
 
-1. View中暴露两个方法：
+(1)View中暴露两个方法：
 
     fun intents(): Observable<I> //将用户意图传递给ViewModel
     fun render(state: S) //订阅ViewModel输出的状态用于展示界面
 
-2. ViewModel中同样暴露两个方法:
+(2)ViewModel中同样暴露两个方法:
 
     fun processIntents(intents: Observable<I>) //处理View传递过来的用户意图
     fun states(): Observable<S> //输出状态给View，用于渲染界面
 
-3. 数据流
+(3)数据流
 
 > 1. View层产生的操作传入给intents()方法，由其将多个intent传递给ViewModel层。
 > 2. ViewModel层processIntents()方法接收所有的intent然后拆分，传递给不同的处理方法process()。
