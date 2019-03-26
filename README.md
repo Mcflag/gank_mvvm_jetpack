@@ -480,7 +480,7 @@ MVVM分层设计可以认为是MVP的进化，它将Presenter改为了ViewModel�
 
 > fun processIntents(intents: Observable<I>) //处理View传递过来的用户意图
 
-> fun states(): Observable<S> //输出状态给View，用于渲染界面
+> fun states(): Observable&lt;S&gt; //输出状态给View，用于渲染界面
 
 3. 数据流
 
