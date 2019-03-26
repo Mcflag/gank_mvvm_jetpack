@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_version.compileSdkVersion
+    defaultConfig {
+        applicationId "com.ccooy.gankart"
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':mvvm')
+
+    // support
+    implementation libs.support_v7
+    implementation libs.recyclerview
+    implementation libs.design
+    implementation libs.constraint
+    implementation libs.flexbox
+
+    debugImplementation libs.leak_canary_debug
+    debugImplementation libs.leak_canary_debug_support
+    releaseImplementation libs.leak_canary_release
+
+    kapt libs.glide_compiler
+    kapt libs.arch_comp_room_compiler
+    kapt libs.arch_comp_compiler
+
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.cpacm:floatingmusicmenu:1.0.0'
+
+    testImplementation libs.junit
+    testImplementation libs.mockito_kotlin
+    testImplementation libs.arch_comp_room_test
+    testImplementation libs.arch_comp_test
+    testImplementation libs.robolectric
+
+    androidTestImplementation libs.junit
+    androidTestImplementation libs.espresso_core
+    androidTestImplementation libs.espresso_contrib
+    androidTestImplementation libs.espresso_idling_resource
+    androidTestImplementation libs.espresso_test_runner
+    androidTestImplementation libs.espresso_test_rules
+    androidTestImplementation libs.arch_comp_room_test
+    androidTestImplementation libs.arch_comp_test
+}
+
+kapt {
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas".toString())
+    }
+}
