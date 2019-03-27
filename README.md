@@ -144,9 +144,9 @@ Paging有三个部分：
 
 Paging的核心原理是将多种数据源，分页策略进行组合，交给适配器，然后委托给代理类的AsyncPagedListDiffer的submitList()方法处理，通知其内部保存的PageList更新数据，并刷新UI。
 
-Paging的缺点很明显，那就是Paging本身是对RecyclerView.Adapter的继承，这意味着使用了Paging，就必须抛弃其他的Adapter库，或者自己改造，如果仅仅为了无线滚动分页就使用Paging的话，感觉有点得不偿失。
+Paging的缺点很明显，那就是Paging本身是对RecyclerView.Adapter的继承，这意味着使用了Paging，就必须抛弃其他的Adapter库，或者自己改造。
 
-对于Adapter还可以使用DslAdapter，实现复杂的RecyclerView。因为没有一个好的库能够同时解决下拉刷新、无限滚动分页、复杂RecyclerView的显示这多种需求，需要在实际开发时根据具体情况再取舍使用。
+对于RecyclerView的Adapter还可以使用DslAdapter，实现复杂的RecyclerView。因为没有一个好的库能够同时解决下拉刷新、无限滚动分页、复杂RecyclerView的显示这多种需求，需要在实际开发时根据具体情况再取舍使用。
 
 #### 2.6 Room
 
