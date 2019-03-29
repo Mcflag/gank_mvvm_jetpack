@@ -36,10 +36,10 @@
                 android:layout_marginTop="40dp"
                 android:background="@drawable/shape_jump"
                 android:gravity="center"
-                android:text="@string/jump_default"
+                android:text='@{ @string/jump + "(" +activity.viewModel.timer + "s)" }'
                 android:textColor="#fff"
                 android:textSize="16sp"
-                app:bind_view_onClick="@{ () -> activity.getDrawable() }"
+                app:bind_view_onClick="@{ () -> activity.toLogin() }"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 

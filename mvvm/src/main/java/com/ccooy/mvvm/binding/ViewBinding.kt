@@ -26,6 +26,16 @@ fun setVisible(view: View, visible: Boolean) {
 }
 
 /**
+ * [View]是否隐藏
+ *
+ * @param visible 值为true时可见
+ */
+@BindingAdapter("bind_view_not_invisible")
+fun setNotInvisible(view: View, visible: Boolean) {
+    view.visibility = if (visible) View.VISIBLE else View.INVISIBLE
+}
+
+/**
  * [View]长按事件
  *
  * @param consumer 事件消费者

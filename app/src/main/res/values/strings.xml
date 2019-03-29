@@ -26,4 +26,12 @@
     <string name="search_category_front">前端</string>
     <string name="search_category_recommend">瞎推荐</string>
     <string name="search_category_app">App</string>
+
+    <string name="common_loading_empty">没有数据</string>
+    <string name="common_loading_error">网络错误</string>
+    <string name="login_tips">使用GitHub登入</string>
+    <string name="login_hint_username">用户名或邮箱</string>
+    <string name="login_hint_password">登入密码</string>
+    <string name="login_sign_in">登入</string>
+
 </resources>

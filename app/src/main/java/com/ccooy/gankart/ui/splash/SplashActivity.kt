@@ -2,9 +2,11 @@ package com.ccooy.gankart.ui.splash
 
 import com.ccooy.gankart.R
 import com.ccooy.gankart.databinding.ActivitySplashBinding
+import com.ccooy.gankart.ui.login.LoginActivity
+import com.ccooy.gankart.ui.main.MainActivity
 import com.ccooy.mvvm.base.view.activity.BaseActivity
-import com.ccooy.mvvm.ext.toast
-import com.ccooy.mvvm.logger.log
+import com.ccooy.mvvm.ext.livedata.toReactiveStream
+import com.uber.autodispose.autoDisposable
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 
@@ -20,14 +22,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     val viewModel: SplashViewModel by instance()
 
     override fun initView() {
-        viewModel.getUrl()
+        viewModel.complete
+            .toReactiveStream()
+            .doOnNext { toLogin() }
+            .autoDisposable(scopeProvider)
+            .subscribe()
     }
 
-    fun getDrawable() {
-        viewModel.getUrl()
-        log { "" + viewModel.picUrl.value }
-        toast("" + viewModel.picUrl.value)
-    }
+    fun toLogin() = LoginActivity.launch(this)
 
     companion object {
         private const val TAG = "SplashFragment"

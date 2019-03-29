@@ -3,6 +3,10 @@ package com.ccooy.gankart.base
 import android.app.Application
 import android.content.Context
 import com.ccooy.gankart.BuildConfig
+import com.ccooy.gankart.di.dbModule
+import com.ccooy.gankart.di.httpClientModule
+import com.ccooy.gankart.di.prefsModule
+import com.ccooy.gankart.di.serviceModule
 import com.ccooy.mvvm.logger.initLogger
 import com.squareup.leakcanary.LeakCanary
 import org.kodein.di.Kodein
@@ -19,10 +23,10 @@ open class BaseApplication : Application(), KodeinAware {
         import(androidModule(this@BaseApplication))
         import(androidXModule(this@BaseApplication))
 
-//        import(serviceModule)
-//        import(dbModule)
-//        import(httpClientModule)
-//        import(prefsModule)
+        import(serviceModule)
+        import(dbModule)
+        import(httpClientModule)
+        import(prefsModule)
     }
 
     override fun onCreate() {

@@ -6,6 +6,7 @@
         <attr name="bind_view_onClick_closeSoftInput" format="boolean"/>
         <attr name="bind_view_onLongClick" format="reference"/>
         <attr name="bind_view_visibility" format="boolean"/>
+        <attr name="bind_view_not_invisible" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="ImageView">
