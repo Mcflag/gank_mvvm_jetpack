@@ -14,6 +14,12 @@
     <string name="search_hint">搜索</string>
     <string name="search_category_hint">请选择搜索分类</string>
 
+    <string name="main_nav_home">主页</string>
+    <string name="main_nav_gank">干货</string>
+    <string name="main_nav_xiandu">闲读</string>
+    <string name="main_nav_fuli">福利</string>
+    <string name="main_nav_mine">我的</string>
+
     <string name="xiandu_main_tab">主分类</string>
     <string name="xiandu_sub_tab">子分类</string>
 
@@ -33,5 +39,7 @@
     <string name="login_hint_username">用户名或邮箱</string>
     <string name="login_hint_password">登入密码</string>
     <string name="login_sign_in">登入</string>
+    <string name="my_repos">我的仓库</string>
+    <string name="my_events">我的动态</string>
 
 </resources>

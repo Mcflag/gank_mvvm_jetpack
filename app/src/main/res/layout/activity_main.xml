@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
-                name="main"
+                name="activity"
                 type="com.ccooy.gankart.ui.main.MainActivity"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainActivity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.main.MainActivity">
+            android:layout_height="match_parent">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hello World!"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:bind_viewPager_fragmentManager="@{ activity.getSupportFragmentManager() }"
+                app:bind_viewPager_fragments="@{ activity.fragments }"
+                app:bind_viewPager_offScreenPageLimit="@{ 4 }"
+                app:bind_viewPager_onPageSelectedChanged="@{ (index) -> activity.onPageSelectChangedPort(index) }"
+                app:layout_constraintBottom_toTopOf="@id/bottomNavigationBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+                android:id="@+id/bottomNavigationBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

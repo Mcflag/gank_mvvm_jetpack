@@ -14,5 +14,12 @@
     <color name="secondaryTextBlueGray">#607d8b</color>
 
     <color name="white">#ffffff</color>
-    <color name="transparent">#00ffffff</color>
+    <color name="colorSubtitle">#999</color>
+    <color name="black">#000000</color>
+    <color name="dark_grey">#222222</color>
+    <color name="grey44">#444444</color>
+    <color name="grey66">#666666</color>
+    <color name="grey88">#888888</color>
+    <color name="bg_grey">#F2F2F2</color>
+    <color name="transparent">#00000000</color>
 </resources>

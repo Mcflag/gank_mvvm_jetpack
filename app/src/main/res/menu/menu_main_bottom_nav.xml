@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/main_nav_home"/>
+    <item
+            android:id="@+id/nav_gank"
+            android:icon="@drawable/hot_article"
+            android:title="@string/main_nav_gank"/>
+    <item
+            android:id="@+id/nav_xiandu"
+            android:icon="@drawable/magazine"
+            android:title="@string/main_nav_xiandu"/>
+    <item
+            android:id="@+id/nav_fuli"
+            android:icon="@drawable/gift"
+            android:title="@string/main_nav_fuli"/>
+    <item
+            android:id="@+id/nav_mine"
+            android:icon="@drawable/user"
+            android:title="@string/main_nav_mine"/>
+</menu>
