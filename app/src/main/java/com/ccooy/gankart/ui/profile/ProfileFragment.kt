@@ -2,6 +2,8 @@ package com.ccooy.gankart.ui.profile
 
 import com.ccooy.gankart.R
 import com.ccooy.gankart.databinding.FragmentProfileBinding
+import com.ccooy.gankart.ui.profile.events.EventsActivity
+import com.ccooy.gankart.ui.profile.repos.ReposActivity
 import com.ccooy.gankart.utils.toast
 import com.ccooy.mvvm.base.view.fragment.BaseFragment
 import org.kodein.di.Kodein
@@ -22,5 +24,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     }
 
+    fun toRepos() = context?.let {
+        ReposActivity.launch(it)
+    }
+
+    fun toEvents() = context?.let {
+        EventsActivity.launch(it)
+    }
+
     fun edit() = toast { "comming soon..." }
+
 }

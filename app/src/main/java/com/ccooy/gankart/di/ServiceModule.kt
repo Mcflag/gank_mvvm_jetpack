@@ -2,6 +2,7 @@ package com.ccooy.gankart.di
 
 import com.ccooy.gankart.http.service.LoginServiceImpl
 import com.ccooy.gankart.http.service.ServiceManager
+import com.ccooy.gankart.http.service.UserService
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -17,6 +18,10 @@ val serviceModule = Kodein.Module(SERVICE_MODULE_TAG) {
     }
 
     bind<ServiceManager>() with singleton {
-        ServiceManager(instance())
+        ServiceManager(instance(), instance())
+    }
+
+    bind<UserService>() with singleton {
+        instance<Retrofit>().create(UserService::class.java)
     }
 }

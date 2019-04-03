@@ -33,6 +33,12 @@
                   android:launchMode="singleTop"/>
         <activity android:name=".ui.main.MainActivity"
                   android:launchMode="singleTop"/>
+        <activity android:name=".ui.profile.repos.ReposActivity"
+                  android:launchMode="singleTop"/>
+        <activity android:name=".ui.profile.events.EventsActivity"
+                  android:launchMode="singleTop"/>
+        <activity android:name=".ui.main.WebViewActivity"
+                  android:launchMode="singleTop"/>
     </application>
 
 </manifest>

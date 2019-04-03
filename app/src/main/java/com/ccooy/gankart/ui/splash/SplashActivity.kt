@@ -3,7 +3,6 @@ package com.ccooy.gankart.ui.splash
 import com.ccooy.gankart.R
 import com.ccooy.gankart.databinding.ActivitySplashBinding
 import com.ccooy.gankart.ui.login.LoginActivity
-import com.ccooy.gankart.ui.main.MainActivity
 import com.ccooy.mvvm.base.view.activity.BaseActivity
 import com.ccooy.mvvm.ext.livedata.toReactiveStream
 import com.uber.autodispose.autoDisposable
@@ -32,6 +31,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     fun toLogin() = LoginActivity.launch(this)
 
     companion object {
-        private const val TAG = "SplashFragment"
+        private const val TAG = "SplashActivity"
     }
 }

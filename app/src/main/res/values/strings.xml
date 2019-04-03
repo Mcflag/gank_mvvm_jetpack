@@ -42,4 +42,8 @@
     <string name="my_repos">我的仓库</string>
     <string name="my_events">我的动态</string>
 
+    <string name="repos_filter_created">按创建时间排序</string>
+    <string name="repos_filter_letter">按名称排序</string>
+    <string name="repos_filter_update">按更新时间排序</string>
+
 </resources>

@@ -124,11 +124,11 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:padding="26dp"
                     android:clickable="true"
                     android:background="@drawable/selector_dark_background"
-                    android:padding="6dp"
                     android:text="@string/my_repos"
+                    app:bind_view_onClick="@{ () -> fragment.toRepos() }"
                     android:textSize="20sp"/>
             <View
                     android:layout_width="match_parent"
@@ -139,11 +139,11 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:padding="26dp"
                     android:clickable="true"
                     android:background="@drawable/selector_dark_background"
-                    android:padding="6dp"
                     android:text="@string/my_events"
+                    app:bind_view_onClick="@{ () -> fragment.toEvents() }"
                     android:textSize="20sp"/>
         </LinearLayout>
 
