@@ -33,6 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), BottomNavigationBar.On
     val fragments: List<Fragment> by instance(MAIN_LIST_FRAGMENT)
 
     override fun initView() {
+        requestStorage()
         bottomNavigationBar.setTabSelectedListener(this)
         bottomNavigationBar
             .setMode(BottomNavigationBar.MODE_FIXED) // 设置mode

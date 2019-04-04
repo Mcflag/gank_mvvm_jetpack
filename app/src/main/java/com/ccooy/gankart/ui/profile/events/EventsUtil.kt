@@ -16,6 +16,7 @@ import com.ccooy.gankart.entity.ReceivedEvent
 import com.ccooy.gankart.entity.Type
 import com.ccooy.gankart.utils.TimeConverter
 import com.ccooy.mvvm.functional.Consumer
+import com.ccooy.mvvm.functional.Consumer2
 import java.lang.RuntimeException
 
 object EventsUtil {
@@ -37,8 +38,8 @@ object EventsUtil {
     fun eventTitle(
         view: TextView,
         data: ReceivedEvent,
-        actorEvent: Consumer<String>,
-        repoEvent: Consumer<String>
+        actorEvent: Consumer2<String>,
+        repoEvent: Consumer2<String>
     ): CharSequence {
         val actor = data.actor.displayLogin
         val action = when (data.type) {
@@ -52,12 +53,12 @@ object EventsUtil {
 
         val actorSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                actorEvent.accept(data.actor.url)
+                actorEvent.accept(data.actor.url, data.actor.url)
             }
         }
         val repoSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                repoEvent.accept(data.repo.url)
+                repoEvent.accept(data.repo.url, data.repo.url)
             }
         }
         val styleSpan = StyleSpan(Typeface.BOLD)

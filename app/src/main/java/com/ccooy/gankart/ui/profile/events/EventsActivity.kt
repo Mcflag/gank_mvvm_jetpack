@@ -11,11 +11,13 @@ import com.ccooy.gankart.common.loadings.CommonLoadingViewModel
 import com.ccooy.gankart.databinding.ActivityEventsBinding
 import com.ccooy.gankart.databinding.ItemEventsReceivedEventBinding
 import com.ccooy.gankart.entity.ReceivedEvent
+import com.ccooy.gankart.ui.main.WebViewActivity
 import com.ccooy.mvvm.adapter.BasePagingDataBindingAdapter
 import com.ccooy.mvvm.base.view.activity.BaseActivity
 import com.ccooy.mvvm.ext.jumpBrowser
 import com.ccooy.mvvm.ext.livedata.toReactiveStream
 import com.ccooy.mvvm.functional.Consumer
+import com.ccooy.mvvm.functional.Consumer2
 import com.uber.autodispose.autoDisposable
 import io.reactivex.Completable
 import kotlinx.android.synthetic.main.activity_repos.*
@@ -42,14 +44,14 @@ class EventsActivity : BaseActivity<ActivityEventsBinding>() {
             },
             callback = { data, binding, _ ->
                 binding.data = data
-                binding.actorEvent = object : Consumer<String> {
-                    override fun accept(t: String) {
-                        BaseApplication.INSTANCE.jumpBrowser(t)
+                binding.actorEvent = object : Consumer2<String> {
+                    override fun accept(t1: String, t2: String) {
+                        WebViewActivity.launch(this@EventsActivity, t1, t2)
                     }
                 }
-                binding.repoEvent = object : Consumer<String> {
-                    override fun accept(t: String) {
-                        BaseApplication.INSTANCE.jumpBrowser(t)
+                binding.repoEvent = object : Consumer2<String> {
+                    override fun accept(t1: String, t2: String) {
+                        WebViewActivity.launch(this@EventsActivity, t1, t2)
                     }
                 }
             }

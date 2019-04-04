@@ -112,4 +112,7 @@ dependencies {
 
     testImplementation libs.junit
     androidTestImplementation libs.espresso_core
+
+    api "org.permissionsdispatcher:permissionsdispatcher:latest.release"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:latest.release"
 }

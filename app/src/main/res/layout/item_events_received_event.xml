@@ -14,11 +14,11 @@
 
         <variable
                 name="actorEvent"
-                type="com.ccooy.mvvm.functional.Consumer&lt;String>"/>
+                type="com.ccooy.mvvm.functional.Consumer2&lt;String>"/>
 
         <variable
                 name="repoEvent"
-                type="com.ccooy.mvvm.functional.Consumer&lt;String>"/>
+                type="com.ccooy.mvvm.functional.Consumer2&lt;String>"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
