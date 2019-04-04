@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.ccooy.gankart">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -24,6 +25,28 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning"
             tools:replace="android:allowBackup">
+
+        <service
+                android:name=".service.PlayerMusicService"
+                android:enabled="true"
+                android:exported="true"
+                android:process=":music_service"/>
+        <service
+                android:name=".service.KeepJobService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+                android:name=".service.DaemonService"
+                android:enabled="true"
+                android:exported="true"
+                android:process=":daemon_service"/>
+        <service
+                android:name=".service.CancelNoticeService"
+                android:enabled="true"
+                android:exported="true"
+                android:process=":service"/>
+
         <activity android:name=".ui.splash.SplashActivity"
                   android:launchMode="singleTop">
             <intent-filter>
@@ -43,5 +66,6 @@
         <activity android:name=".ui.main.WebViewActivity"
                   android:launchMode="singleTop"/>
     </application>
+
 
 </manifest>

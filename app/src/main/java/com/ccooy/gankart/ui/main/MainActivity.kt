@@ -10,6 +10,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.ccooy.mvvm.base.view.activity.BaseActivity
 import com.ccooy.gankart.R
 import com.ccooy.gankart.databinding.ActivityMainBinding
+import com.ccooy.gankart.service.CancelNoticeService
+import com.ccooy.gankart.service.DaemonService
+import com.ccooy.gankart.service.PlayerMusicService
 import com.ccooy.mvvm.ext.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.Kodein
@@ -28,12 +31,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), BottomNavigationBar.On
 
     // 保存用户按返回键的时间
     private var mExitTime: Long = 0
-    
+
     val viewModel: MainViewModel by instance()
     val fragments: List<Fragment> by instance(MAIN_LIST_FRAGMENT)
 
     override fun initView() {
         requestStorage()
+        startService(Intent(this, DaemonService::class.java))
+        startService(Intent(this, CancelNoticeService::class.java))
         bottomNavigationBar.setTabSelectedListener(this)
         bottomNavigationBar
             .setMode(BottomNavigationBar.MODE_FIXED) // 设置mode
