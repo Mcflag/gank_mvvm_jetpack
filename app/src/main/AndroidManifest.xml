@@ -4,6 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.ccooy.gankart">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -26,26 +30,17 @@
             tools:ignore="GoogleAppIndexingWarning"
             tools:replace="android:allowBackup">
 
+        <receiver android:name=".function.keeplive.receiver.NotificationClickReceiver"/>
+        <activity android:name=".function.keeplive.activity.OnePixelActivity"/>
+
+        <service android:name=".function.keeplive.service.LocalService"/>
+        <service android:name=".function.keeplive.service.HideForegroundService"/>
         <service
-                android:name=".service.PlayerMusicService"
-                android:enabled="true"
-                android:exported="true"
-                android:process=":music_service"/>
-        <service
-                android:name=".service.KeepJobService"
-                android:enabled="true"
-                android:exported="true"
+                android:name=".function.keeplive.service.JobHandlerService"
                 android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service
-                android:name=".service.DaemonService"
-                android:enabled="true"
-                android:exported="true"
-                android:process=":daemon_service"/>
-        <service
-                android:name=".service.CancelNoticeService"
-                android:enabled="true"
-                android:exported="true"
-                android:process=":service"/>
+                android:name=".function.keeplive.service.RemoteService"
+                android:process=":remote"/>
 
         <activity android:name=".ui.splash.SplashActivity"
                   android:launchMode="singleTop">

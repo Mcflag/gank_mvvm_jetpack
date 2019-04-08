@@ -15,7 +15,7 @@
 
 #### 1.2 Android KTX
 
-Android KTX是用Kotlin实现的一组Android工具库，可以让代码更加简洁。作为工具库实际上并不是一定要使用，但是从使代码简洁的角度来说，使用Android KTX更好。
+Android KTX是用Kotlin实现的一组Android工具库，可以让代码更加简洁。作为工具库实际上并不是一定要使用。
 
 特别是对于listener事件的写法，实现代码的代码结构要缩进几层，但是用Android KTX封装的方法，只用只用实现一个方法，写的更简洁。
 
@@ -69,7 +69,7 @@ Data Binding可以绑定数据源，操作，方法引用，监听器等。但�
 
 遇到的另一个坑：xml里慎用自动格式化。data binding根据xml的代码顺序执行，比如针对EditText，android:text="@={inputText}"和android:selection="@{inputText.length()}"两个语句，语句的顺序不能改变。但是自动格式化按照字典序，会修改两个语句的顺序，就会出现异常。
 
-另外BR文件有时候会生成不出来，首先查看xml文件是否正确，xml中的data binding写法是否正确，如果均正确，再通过clean和rebuild重新构建，如果还是不行只有通过反射的方法获取BR类。
+另外BR文件有时候会生成不出来，首先查看xml文件是否正确，xml中的data binding写法是否正确，如果均正确，再通过clean和rebuild重新构建，如果还是不行只有通过反射的方法获取BR类。从实际使用的过程来看，最容易出现的情况是databinding部分写错了，只不过因为没有详细的错误说明，需要认真寻找错误。
 
 最佳实践：xml就是用来显示数据，需要计算的，判断的，通通在代码里先完成。
 
@@ -131,7 +131,7 @@ Navigation用来处理应用内的导航。
 
 不过Navigation从使用的感觉上是一种对单Activity多Fragment的支持库，虽然Navigation支持BottomNavigationView和ToolBar，但是Navigation内部对Fragment的切换采用的是replace(),这意味着，每次点击底部导航控件，都会销毁当前的Fragment，并且实例化一个新的Fragment。
 
-在这个App3.0中要使用Navigation的话，只在根布局的页面通过Navigation导航。另外让我比较犹豫的一点就是他的配置在res中，是一个项目级的库，框架比较死对需求的变化不好快速响应。总而言之，就是Navigation可以用，但没必要。
+另外让我比较犹豫的一点就是他的配置在res中，是一个项目级的库，框架比较死对需求的变化不好快速响应。总而言之，没必要使用Navigation。在App3.0中要使用Navigation的话，只在根布局的页面通过Navigation导航。
 
 #### 2.5 Paging分页
 
@@ -172,7 +172,7 @@ ViewModel的一个优点是解决异步回调。通常我们app需要频繁异�
 
 由于ViewModel生命周期可能长于activity生命周期，所以为了避免内存泄漏Google禁止在ViewModel中引用view、LifeCycle或任何可能包含对Activity Context引用的类。
 
-不过有一个继承自ViewModel的类AndroidViewModel，内部维护了一个ApplicationContext，实在要用Context可以用着个。
+不过有一个继承自ViewModel的类AndroidViewModel，内部维护了一个ApplicationContext，实在要用Context可以用这个。
 
 #### 2.8 WorkManager后台任务管理
 
@@ -273,7 +273,7 @@ App3.0中目前还没有功能用到视频播放。但是如果应用中增加�
 
 #### 4.3 Permissions权限管理
 
-Android6.0之后需要动态的获取权限，可以使用谷歌官方的EasyPermissions。使用简单，并且有已经兼容androidx的版本。
+Android6.0之后需要动态的获取权限，还是使用PermissionDispatcher。使用简单。
 
 #### 4.4 Notifications通知
 
@@ -358,9 +358,7 @@ Kodein是原生kotlin的库，使用比较简洁不需要大量的模板代码�
 
 从现有的实现来看，后台保活没有百分之百成功的策略。在不同设备上，或者用户应用不同的设置，都可能导致后台保活的失效。
 
-不过现有的策略有好几种，需要配合使用，并且还需要实际看效果。
-
-https://blog.csdn.net/weixin_39706415/article/details/83686227
+不过现有的策略有好几种，需要配合使用。
 
 #### 1.1 双进程绑定相互唤起
 
@@ -393,15 +391,7 @@ WorkManager本身就是管理后台服务的组件，使用方法是在work中�
 对于 API level < 18 ：调用startForeground(ID， new Notification())，发送空的Notification ，图标则不会显示。
 对于 API level >= 18：在需要提优先级的service A启动一个InnerService，两个服务同时startForeground，且绑定同样的 ID。Stop 掉InnerService ，这样通知栏图标即被移除。
 
-3. 粘性服务&与系统服务捆绑
-这个是系统自带的，onStartCommand方法必须具有一个整形的返回值，这个整形的返回值用来告诉系统在服务启动完毕后，如果被Kill，系统将如何操作。
-系统服务捆绑更厉害一点，比如NotificationListenerService就是一个监听通知的服务，只要手机收到了通知，NotificationListenerService都能监听到，即时用户把进程杀死，也能重启，所以说可以把这个服务放到我们的进程之中。
-这种方案在某些情况or某些定制ROM上可能失效，我认为可以多做一种保保守方案。
-
-4. 账号同步唤醒
-创建一个账号并设置同步器，创建周期同步，系统会自动调用同步器，这样就能激活我们的APP，局限是国产机会修改最短同步周期（魅蓝NOTE2长达30分钟），并且需要联网才能使用。
-
-5. 接入各个大厂自己的推送
+3. 接入各个大厂自己的推送
 比如接入小米推送接入，华为推送等等，通过ROM的推送来保证消息推送及时。
 
 ### 2 消息推送
@@ -504,10 +494,47 @@ IRepository负责调度数据的获取，它的下面分为两个接口，IRemot
 
 ViewModel作为数据的存储和驱动。同时要兼顾数据源的操作，View的状态处理两个方面。
 
-
 #### 3.3 View层
 
 Activity和Fragment负责产品与用户的交互。
 
 
 ### 4 模块
+
+data
+├─vo 转换层model
+├─cache 本地SharedPreference数据
+├─repository 获取远程数据，各个接口调用的实现类
+└─db 数据库相关database，entity，dao
+
+di 使用dagger库
+├─module
+├─scope
+└─component
+
+net
+├─bean 网络接口model
+├─ApiConnection 连接库
+└─ApiService 网络连接接口
+
+function
+├─keeplive 后台保活封装
+└─tts 语音封装
+
+mvvm
+├─adapter 基础adapter
+│  ├─RecyclerView的adapter
+│  └─Paging的adapter
+├─binding 数据绑定相关的方法
+├─ext 现有类的扩展方法
+└─base mvvm基础类
+   ├─repository model层，定义viewmodel获得数据的接口，接口or本地
+   ├─viewmodel 定义基础的viewmodel
+   ├─view 基本的activity和fragment中需要实现的功能，权限、数据绑定、依赖注入以及其他的基础功能
+   └─viewstate 定义基本的状态，加载的状态有：error、empty、loading、idle。联网的状态有：result、idle、loading、error
+   
+ui
+├─datasource 实现界面获取数据的方法并完成数据源的转换
+├─viewmodel 实现逻辑处理及发送状态和数据。
+└─view activity或者fragment展示数据，接收操作。
+   
