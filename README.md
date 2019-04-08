@@ -501,40 +501,40 @@ Activity和Fragment负责产品与用户的交互。
 
 ### 4 模块
 
-data
-├─vo 转换层model
-├─cache 本地SharedPreference数据
-├─repository 获取远程数据，各个接口调用的实现类
-└─db 数据库相关database，entity，dao
+    data
+    ├─vo 转换层model
+    ├─cache 本地SharedPreference数据
+    ├─repository 获取远程数据，各个接口调用的实现类
+    └─db 数据库相关database，entity，dao
 
-di 使用dagger库
-├─module
-├─scope
-└─component
+    di 使用dagger库
+    ├─module
+    ├─scope
+    └─component
 
-net
-├─bean 网络接口model
-├─ApiConnection 连接库
-└─ApiService 网络连接接口
+    net
+    ├─bean 网络接口model
+    ├─ApiConnection 连接库
+    └─ApiService 网络连接接口
 
-function
-├─keeplive 后台保活封装
-└─tts 语音封装
+    function
+    ├─keeplive 后台保活封装
+    └─tts 语音封装
 
-mvvm
-├─adapter 基础adapter
-│  ├─RecyclerView的adapter
-│  └─Paging的adapter
-├─binding 数据绑定相关的方法
-├─ext 现有类的扩展方法
-└─base mvvm基础类
-   ├─repository model层，定义viewmodel获得数据的接口，接口or本地
-   ├─viewmodel 定义基础的viewmodel
-   ├─view 基本的activity和fragment中需要实现的功能，权限、数据绑定、依赖注入以及其他的基础功能
-   └─viewstate 定义基本的状态，加载的状态有：error、empty、loading、idle。联网的状态有：result、idle、loading、error
+    mvvm
+    ├─adapter 基础adapter
+    │  ├─RecyclerView的adapter
+    │  └─Paging的adapter
+    ├─binding 数据绑定相关的方法
+    ├─ext 现有类的扩展方法
+    └─base mvvm基础类
+       ├─repository model层，定义viewmodel获得数据的接口，接口or本地
+       ├─viewmodel 定义基础的viewmodel
+       ├─view 基本的activity和fragment中需要实现的功能，权限、数据绑定、依赖注入以及其他的基础功能
+       └─viewstate 定义基本的状态，加载的状态有：error、empty、loading、idle。联网的状态有：result、idle、loading、error
    
-ui
-├─datasource 实现界面获取数据的方法并完成数据源的转换
-├─viewmodel 实现逻辑处理及发送状态和数据。
-└─view activity或者fragment展示数据，接收操作。
+    ui
+    ├─datasource 实现界面获取数据的方法并完成数据源的转换
+    ├─viewmodel 实现逻辑处理及发送状态和数据。
+    └─view activity或者fragment展示数据，接收操作。
    
