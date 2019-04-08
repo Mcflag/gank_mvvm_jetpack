@@ -1,40 +1,35 @@
 package com.ccooy.gankart.ui.test01
 
-import java.math.BigDecimal
-import kotlin.reflect.KProperty
-
-interface Base {
-    fun print()
-}
-
-class BaseImpl(val x: Int) : Base {
-    override fun print() {
-        print(x)
-    }
-}
-
-class Derived(b: Base) : Base by b
-
 fun main(args: Array<String>) {
-
-}
-
-fun multy(yuan: Double): Int {
-    return BigDecimal(yuan).multiply(BigDecimal(100)).toInt()
-}
-
-class Example {
-    var p: String by Delegate()
-    var a: String = "1"
-
-}
-
-class Delegate {
-    operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
-        return "$thisRef, 这里委托了 ${property.name} 属性"
+    val ins: IntArray = intArrayOf(2, 3, 6, 1, 24, 5, 78, 43)
+    val ins2 = sort2(ins)
+    for (num in ins2) {
+        println(num)
     }
+}
 
-    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
-        println("$thisRef 的 ${property.name} 属性赋值为 $value")
+fun sort(ins: IntArray): IntArray {
+    for (i in 1 until ins.size) {
+        for (j in i downTo 1) {
+            if (ins[j] > ins[j - 1]) {
+                val temp = ins[j]
+                ins[j] = ins[j - 1]
+                ins[j - 1] = temp
+            }
+        }
     }
+    return ins
+}
+
+fun sort2(ins: IntArray): IntArray {
+    for (i in 1 until ins.size) {
+        val temp = ins[i]
+        var j: Int = i
+        while (j > 0 && ins[j - 1] > temp) {
+            ins[j] = ins[j - 1]
+            j--
+        }
+        ins[j] = temp
+    }
+    return ins
 }
