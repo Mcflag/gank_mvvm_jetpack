@@ -25,6 +25,7 @@ ext {
             retrofit            : '2.4.0',
             okhttp              : '3.11.0',
             gson                : '2.8.4',
+            dagger              : '2.16',
             kodein              : '6.0.1',
             glide               : '4.8.0',
             dsladapter          : '0.8.4',
@@ -120,6 +121,12 @@ ext {
             kodein                   : [group: 'org.kodein.di', name: 'kodein-di-generic-jvm', version: versions.kodein],
             kodein_android           : [group: 'org.kodein.di', name: 'kodein-di-framework-android-core', version: versions.kodein],
             kodein_androidx          : [group: 'org.kodein.di', name: 'kodein-di-framework-android-x', version: versions.kodein],
+
+            dagger                   : [group: 'com.google.dagger', name: 'dagger', version: versions.dagger],
+            dagger_compiler          : [group: 'com.google.dagger', name: 'dagger-compiler', version: versions.dagger],
+            dagger_android           : [group: 'com.google.dagger', name: 'dagger-android', version: versions.dagger],
+            dagger_android_support   : [group: 'com.google.dagger', name: 'dagger-android-support', version: versions.dagger],
+            dagger_android_processor : [group: 'com.google.dagger', name: 'dagger-android-processor', version: versions.dagger],
 
             timber                   : [group: 'com.jakewharton.timber', name: 'timber', version: versions.timber],
 
